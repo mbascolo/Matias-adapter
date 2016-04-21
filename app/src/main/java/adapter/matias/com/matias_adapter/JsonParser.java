@@ -11,10 +11,10 @@ import java.util.List;
 /**
  * Creado por Hermosa Programación.
  */
-public class JsonAnimalParser {
+public class JsonParser {
 
 
-    public List<Animal> leerFlujoJson(InputStream in) throws IOException {
+    public List<Producto> leerFlujoJson(InputStream in) throws IOException {
         // Nueva instancia JsonReader
         JsonReader reader = new JsonReader(new InputStreamReader(in, "UTF-8"));
         try {
@@ -28,9 +28,9 @@ public class JsonAnimalParser {
 
 
 
-    public List<Animal> leerArrayAnimales(JsonReader reader) throws IOException {
+    public List<Producto> leerArrayAnimales(JsonReader reader) throws IOException {
         // Lista temporal
-        ArrayList<Animal> animales = new ArrayList<>();
+        ArrayList<Producto> animales = new ArrayList<>();
 
         reader.beginArray();
         while (reader.hasNext()) {
@@ -41,7 +41,7 @@ public class JsonAnimalParser {
         return animales;
     }
 
-    public Animal leerAnimal(JsonReader reader) throws IOException {
+    public Producto leerAnimal(JsonReader reader) throws IOException {
         // Variables locales
         String nroPool = null;
         String descripcion = null;
@@ -72,7 +72,7 @@ public class JsonAnimalParser {
             }
         }
         reader.endObject();
-        return new Animal(nroPool, descripcion, pathImagenBannerMiniatura);
+        return new Producto(nroPool, descripcion, pathImagenBannerMiniatura);
     }
 
 }

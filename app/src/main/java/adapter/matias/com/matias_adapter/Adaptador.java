@@ -13,9 +13,9 @@ import java.util.List;
 /**
  * Creado por Hermosa Programación.
  */
-public class AdaptadorDeAnimales extends ArrayAdapter<Animal> {
+public class Adaptador extends ArrayAdapter<Producto> {
 
-    public AdaptadorDeAnimales(Context context, List<Animal> objects) {
+    public Adaptador(Context context, List<Producto> objects) {
         super(context, 0, objects);
     }
 
@@ -45,7 +45,7 @@ public class AdaptadorDeAnimales extends ArrayAdapter<Animal> {
 
 
         //Obteniendo instancia de la Tarea en la posición actual
-        Animal item = getItem(position);
+        Producto item = getItem(position);
 
         especieAnimal.setText(item.getNroPool());
         descAnimal.setText(item.getDescripcion());

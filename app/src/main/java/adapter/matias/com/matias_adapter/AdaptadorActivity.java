@@ -6,7 +6,6 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.AsyncTask;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -29,7 +28,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class MainActivity extends AppCompatActivity {
+public class AdaptadorActivity extends AppCompatActivity {
 
     /*
     Variables globales
@@ -48,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_adaptador);
 
         lista = (ListView) findViewById(R.id.listaAnimales);
 
@@ -130,11 +129,11 @@ public class MainActivity extends AppCompatActivity {
         startActivity(i);
     }
 
-    public class JsonTask extends AsyncTask<URL, Void, List<Animal>> {
+    public class JsonTask extends AsyncTask<URL, Void, List<Producto>> {
 
         @Override
-        protected List<Animal> doInBackground(URL... urls) {
-            List<Animal> animales = null;
+        protected List<Producto> doInBackground(URL... urls) {
+            List<Producto> animales = null;
 
             try {
 
@@ -148,15 +147,15 @@ public class MainActivity extends AppCompatActivity {
 
                 if (statusCode != 200) {
                     animales = new ArrayList<>();
-                    animales.add(new Animal("Error", null, null));
+                    animales.add(new Producto("Error", null, null));
 
                 } else {
 
                     // Parsear el flujo con formato JSON
                     InputStream in = new BufferedInputStream(con.getInputStream());
 
-                    // JsonAnimalParser parser = new JsonAnimalParser();
-                    GsonAnimalParser parser = new GsonAnimalParser();
+                    // JsonParser parser = new JsonParser();
+                    GsonProductoParser parser = new GsonProductoParser();
 
                     animales = parser.leerFlujoJson(in);
 
@@ -173,12 +172,12 @@ public class MainActivity extends AppCompatActivity {
         }
 
         @Override
-        protected void onPostExecute(List<Animal> animales) {
+        protected void onPostExecute(List<Producto> animales) {
             /*
             Asignar los objetos de Json parseados al adaptador
              */
             if (animales != null) {
-                adaptador = new AdaptadorDeAnimales(getBaseContext(), animales);
+                adaptador = new Adaptador(getBaseContext(), animales);
                 lista.setAdapter(adaptador);
             } else {
                 Toast.makeText(

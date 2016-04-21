@@ -12,23 +12,23 @@ import java.util.List;
 /**
  * Creado por Hermosa Programación.
  */
-public class GsonAnimalParser {
+public class GsonProductoParser {
 
 
-    public List<Animal> leerFlujoJson(InputStream in) throws IOException {
+    public List<Producto> leerFlujoJson(InputStream in) throws IOException {
         // Nueva instancia de la clase Gson
         Gson gson = new Gson();
 
         JsonReader reader = new JsonReader(new InputStreamReader(in, "UTF-8"));
-        List<Animal> animales = new ArrayList<>();
+        List<Producto> animales = new ArrayList<>();
 
         // Iniciar el array
         reader.beginArray();
 
         while (reader.hasNext()) {
             // Lectura de objetos
-            Animal animal = gson.fromJson(reader, Animal.class);
-            animales.add(animal);
+            Producto producto = gson.fromJson(reader, Producto.class);
+            animales.add(producto);
         }
 
 

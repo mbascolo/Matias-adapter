@@ -3,15 +3,15 @@ package adapter.matias.com.matias_adapter;
 /**
  * Creado por Hermosa Programación el 18/01/2015.
  */
-public class Animal {
+public class Producto {
     private String nroPool;
     private String descripcion;
     private String pathImagenBannerMiniatura;
 
-    public Animal(){
+    public Producto(){
     }
 
-    public Animal(String nroPool, String descripcion, String pathImagenBannerMiniatura) {
+    public Producto(String nroPool, String descripcion, String pathImagenBannerMiniatura) {
         this.nroPool = nroPool;
         this.descripcion = descripcion;
         this.pathImagenBannerMiniatura = pathImagenBannerMiniatura;
